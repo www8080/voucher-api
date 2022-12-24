@@ -86,8 +86,8 @@ class VoucherController extends BaseController
     public function generateVoucher()
     {
 	$timeStart        = microtime(true);
-	//$totalCode        = 1090000;
-	$totalCode        = 100;
+	$totalCode        = 1090000;
+	//$totalCode        = 100;
 	$processTask      = 2;
 	$totalEachFile    = $totalCode / $processTask;
 	$dataFromPos      = 0;
