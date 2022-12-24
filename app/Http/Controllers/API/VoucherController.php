@@ -125,49 +125,6 @@ class VoucherController extends BaseController
 	//var_dump($uniqueCode);
 	//print_r($uniqueCode);
 
-	//for ($i=0; $i<sizeOf($uniqueCode); $i++) {
-	//	$expiryDate = date('Y-m-d', strtotime($this->getExpiryDate()));
-        //        if(Carbon::parse($expiryDate) < Carbon::now()->format('Y-m-d')){
-        //          $voucherStatus  = "Expired";
-        //        } else {
-        //           $voucherStatus = "Available";
-        //        }
-
-		//DB::beginTransaction()
-                //DB::table('vouchers')->upsert(
-                //                ['voucher_code' => $uniqueCode[$i], 'status' => $voucherStatus, 'expiry_date' => Carbon::now(), 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-		//		'voucher_code'
-                //        );
-		//DB::commit()
-
-		//$datas = array_chunk($uniqueCode, 10000, true);
-		//foreach ($datas as $key => $data) {
-		 //  DB::beginTransaction()
-	         //  DB::table('vouchers')->insert(
-                  //            ['voucher_code' => $data[$i], 'status' => $voucherStatus, 'expiry_date' => Carbon::now(), 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
-                  //     );
-        	  //DB::commit()
-		//}
-	//}
-
-	//$datas = array_chunk($uniqueCode, 10000, true);
-	//$i=0;
-        //    foreach ($datas as $key => $data) {
-	//	 $expiryDate = date('Y-m-d', strtotime($this->getExpiryDate()));
-         //       if(Carbon::parse($expiryDate) < Carbon::now()->format('Y-m-d')){
-          //         $voucherStatus  = "Expired";
-           //     } else {
-            //       $voucherStatus = "Available";
-             //   }
-		//dd($data[0]);
-		//var_dump($data);exit();
-                   //DB::beginTransaction();
-                   //DB::table('vouchers')->insert(
-                   //           ['voucher_code' => $data[$i++], 'status' => $voucherStatus, 'expiry_date' => Carbon::now(), 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
-                   //    );
-                  //DB::commit();
-             //}
-
 	for ($i=0; $i<$processTask; $i++) {
 	   //echo("From: " . $dataFromPos . " - Each File Total:" . $totalEachFile);
 
