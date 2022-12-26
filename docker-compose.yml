@@ -1,0 +1,65 @@
+version: '3'
+services:
+  
+  #PHP Service
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: voucher-api/php
+    cpus: 1
+    mem_limit: 2048m
+    container_name: voucher-api
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: voucher-api
+      SERVICE_TAGS: dev
+      TZ: Asia/Singapore
+    #working_dir: /var/www/html/voucher
+    volumes:
+      - ./:/var/www/html/voucher
+    networks:
+      - voucher-network
+
+  #Nginx Service
+  webserver:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html/voucher
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - voucher-network
+
+  #MySQL Service
+  db:
+    image: mysql:8.0.31
+    container_name: mysql-db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: root
+      MYSQL_ROOT_PASSWORD: Pass@123
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/:rw
+      - ./docker/mysql/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:rw
+    networks:
+      - voucher-network
+
+#Docker Networks
+networks:
+  voucher-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
